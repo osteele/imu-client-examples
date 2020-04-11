@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IMU 3D Model</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.2/math.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.6/build/dat.gui.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/paho-mqtt@1.1/paho-mqtt.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0/lib/p5.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="connection-gui"></div>
+</body>
+
+<script type="module">
+    import * as sketch from './js/3d-model.js'
+    Object.keys(sketch).forEach(name => window[name] = sketch[name])
+</script>
+
+</html>
