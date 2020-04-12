@@ -12,9 +12,10 @@ To run these examples, run a server such as:
 
 * (Atom) [atom-live-server package](https://atom.io/packages/atom-live-server)
 * (Visual Studio Code) [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
-* (Command line) `python -m SimpleHTTPServer`
+* (Command line) `python -m SimpleHTTPServer 5500`. The inclusion of `5500` is not necessary, but makes this compatible with the URLs in the Guide section, below.
 
-Click the "Connect BLUE" button to make a Bluetooth connection. This needs to be repeated each time the page is loaded.
+Click the "Connect BLUE" button to make a Bluetooth connection. This needs to be
+repeated each time the page is loaded.
 
 To connect to an MQTT server ("broker"), click "Open Controls" and enter the
 hostname of the MQTT broker, and enter the username and password. If several
@@ -23,20 +24,22 @@ all of them. Enter a device id to restrict them to only a single device.
 
 ## A Guide to the examples
 
-<http://127.0.0.1:8000> displays a directory of web pages in the `web` directory
-directory. It is written in [React](https://reactjs.org), with
+<http://127.0.0.1:5500> displays a list of examples in this directory.
+
+<http://127.0.0.1:5500/dashboard.html> displays a directory of web pages in the
+`web` directory directory. It is written in [React](https://reactjs.org), with
 [Babel](https://babeljs.io) to process JSX.
 
-<http://localhost:8000/3d-model.html> is a p5.js sketch that displays the
+<http://localhost:5500/3d-model.html> is a p5.js sketch that displays the
 [Stanford bunny](https://en.wikipedia.org/wiki/Stanford_bunny). The 3d
 orientation of the bunny is yolked to the IMU orientation. The model is red
 before the sensor is minimally calibrated, and it fades out when sensor data is
 not being received. (With the Gravity BNO055, the model mostly stays red.)
 
-<http://127.0.0.1:8000/barchart.html> displays a live bar chart of sensor data.
+<http://127.0.0.1:5500/barchart.html> displays a live bar chart of sensor data.
 This is implemented as a [p5.js](https://p5js.org) sketch.
 
-<http://127.0.0.1:8000/chart.html> uses [HighCharts](https://www.highcharts.com)
+<http://127.0.0.1:5500/chart.html> uses [HighCharts](https://www.highcharts.com)
 to display another live graph, that automatically scales the *y* axis as data
 arrives.
 
