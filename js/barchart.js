@@ -16,8 +16,7 @@ function setup() {
 }
 
 function draw() {
-    background(200, 200, 212);
-    clear();
+    background('white');
     noStroke();
 
     let subgraphX = 10;
