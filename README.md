@@ -45,13 +45,8 @@ arrives.
 
 ## Additional reading
 
-See the [npm imu-tools README](https://www.npmjs.com/package/imu-tools) for additional
-documentation for the IMU connection code.
-
-Note that the p5.js sketches in this directory are run in a JavaScript module.
-This requires that any function in the sketch that p5.js *calls*, such as
-`preload`, `setup`, `draw`, or `mousePressed`, must be defined using `export
-function` instead of simply `export`.
+See the [npm imu-tools README](https://www.npmjs.com/package/imu-tools) for
+additional documentation for the IMU connection code.
 
 ## License
 

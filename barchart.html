@@ -17,8 +17,9 @@
 </body>
 
 <script type="module">
-    import * as sketch from './js/barchart.js'
-    Object.keys(sketch).forEach(name => window[name] = sketch[name])
+    import * as imuConnection from 'https://cdn.jsdelivr.net/npm/imu-tools@0.1.2/index.js';
+    window.imuConnection = imuConnection;
 </script>
+<script src="./js/barchart.js"></script>
 
 </html>

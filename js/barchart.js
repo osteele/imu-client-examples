@@ -1,5 +1,3 @@
-import { onSensorData } from 'https://cdn.jsdelivr.net/npm/imu-tools@0.1/index.js';
-
 const IGNORED_PROPERTIES = ['calibration', 'orientationMatrix', 'receivedAt'];
 
 const BAR_WIDTH = 25;
@@ -10,11 +8,14 @@ const PALETTE = ['red', 'green', 'blue', 'gray', 'orange', 'pink'];
 let sensorData = {};
 let ranges = {}; // sensor name => [min, max] observed range
 
-export function setup() {
+function setup() {
     createCanvas(windowWidth, windowHeight);
+    imuConnection.onSensorData(({ data }) => {
+        sensorData = { ...data };
+    });
 }
 
-export function draw() {
+function draw() {
     background(200, 200, 212);
     clear();
     noStroke();
@@ -74,7 +75,3 @@ function drawBars(key, values, barColor) {
 function formatPrecision(n) {
     return String(n).replace(/(\.\d\d)\d+/, '$1');
 }
-
-onSensorData(({ data }) => {
-    sensorData = { ...data };
-});
