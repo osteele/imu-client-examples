@@ -56,9 +56,12 @@ if (window.dat && !isMobile) {
         .onFinishChange(loadModelFromSettings);
 }
 
+export function preload() {
+    loadModelFromSettings();
+}
+
 export function setup() {
     createCanvas(windowWidth, windowHeight, WEBGL);
-    loadModelFromSettings();
     createButton('Calibrate').position(0, 0).mousePressed(calibrateModels);
 }
 

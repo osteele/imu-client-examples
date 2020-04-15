@@ -28,6 +28,9 @@ all of them. Enter a device id to restrict them to only a single device.
 
 ## A Guide to the examples
 
+(If you run a server at port 5500, as above, you can click on the example names
+below in order to open them in a browser.)
+
 [`index.html`](http://127.0.0.1:5500) displays a list of examples in this directory.
 
 [`3d-model.html`](http://localhost:5500/3d-model.html) is a p5.js sketch that displays the
@@ -35,6 +38,16 @@ all of them. Enter a device id to restrict them to only a single device.
 orientation of the bunny is yolked to the IMU orientation. The model is red
 before the sensor is minimally calibrated, and it fades out when sensor data is
 not being received. (With the Gravity BNO055, the model mostly stays red.)
+
+This sketch has a lot of features, that make it useful for interaction but
+difficult to read the code. See `3d-example`, below.
+
+The "Calibrate" button resets tells the software that the IMU is currently in
+home position (rightside up). It is not related to the IMU's built-in
+calibration feature, that synchronizes the IMU's sensors to each other.
+
+[`3d-example.html`](http://localhost:5500/3d-example.html) is a simpler  sketch
+that also displays the bunny. It assumes that only a single IMU is connected.
 
 [`sketch.html`](http://localhost:5500/sketch.html) is simple p5.js sketch that
 displays the Euler angles. Use it as a starter templtate for writing p5.js
