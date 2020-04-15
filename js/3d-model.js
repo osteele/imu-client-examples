@@ -2,11 +2,11 @@ import {
     onSensorData,
     bleAvailable,
     bleConnect,
-} from 'https://cdn.jsdelivr.net/npm/imu-tools@0.1/index.js';
+} from 'https://cdn.jsdelivr.net/npm/imu-tools@0.1.3/index.js';
 import {
     isMobile,
     quatToMatrix,
-} from 'https://cdn.jsdelivr.net/npm/imu-tools@0.1/utils.js';
+} from 'https://cdn.jsdelivr.net/npm/imu-tools@0.1.3/utils.js';
 
 let modelObj; // setup initializes this to a p5.js 3D model
 const devices = {}; // sensor data for each device, indexed by device id
