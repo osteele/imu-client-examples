@@ -10,9 +10,9 @@ onSensorData(({ device, data }) => {
     const { receivedAt: timestamp } = data;
     const timestamps = deviceMap[deviceId]
         ? [
-              timestamp,
-              ...deviceMap[deviceId].timestamps.filter((ts) => ts > now - 1000),
-          ]
+            timestamp,
+            ...deviceMap[deviceId].timestamps.filter((ts) => ts > now - 1000),
+        ]
         : [timestamp];
     deviceMap[deviceId] = { device, timestamp, timestamps };
 });
@@ -29,30 +29,30 @@ function App() {
     return devices.length === 0 ? (
         <div>No devices are online</div>
     ) : (
-        <table className="table">
-            <tbody>
-                <tr>
-                    <th>Device ID</th>
-                    <th>Name</th>
-                    <th>Sample Rate</th>
-                    <th>Last Seen</th>
-                </tr>
-                {devices.map((record) => {
-                    const { deviceId } = record.device;
-                    return (
-                        <Device
-                            record={record}
-                            key={deviceId}
-                            isEditing={editDeviceId === deviceId}
-                            setEditing={(flag) =>
-                                setEditDeviceId(flag && deviceId)
-                            }
-                        />
-                    );
-                })}
-            </tbody>
-        </table>
-    );
+            <table className="table">
+                <tbody>
+                    <tr>
+                        <th>Device ID</th>
+                        <th>Name</th>
+                        <th>Sample Rate</th>
+                        <th>Last Seen</th>
+                    </tr>
+                    {devices.map((record) => {
+                        const { deviceId } = record.device;
+                        return (
+                            <Device
+                                record={record}
+                                key={deviceId}
+                                isEditing={editDeviceId === deviceId}
+                                setEditing={(flag) =>
+                                    setEditDeviceId(flag && deviceId)
+                                }
+                            />
+                        );
+                    })}
+                </tbody>
+            </table>
+        );
 }
 
 function Device({
@@ -77,16 +77,12 @@ function Device({
                 {deviceId}
             </td>
             <td>
-                {device.deviceName ? (
-                    <Editable
-                        isEditing={isEditing}
-                        setEditing={setEditing}
-                        onChange={(name) => device.setDeviceName(name)}
-                        value={device.deviceName}
-                    />
-                ) : (
-                    <div>{device.deviceName}</div>
-                )}
+                <Editable
+                    isEditing={isEditing}
+                    setEditing={setEditing}
+                    onChange={(name) => device.setDeviceName(name)}
+                    value={device.deviceName}
+                />
             </td>
             <td>{frameRate}</td>
             <td>{ageString(DateTime.fromMillis(timestamp))}</td>
@@ -116,8 +112,10 @@ function Editable({ value, isEditing, setEditing, onChange }) {
             onKeyUp={handleKey}
         />
     ) : (
-        <div onClick={() => setEditing(true)}>{value || '<default>'}</div>
-    );
+            <div class={`device-name ${value ? '' : 'blank'}`} onClick={() => setEditing(true)}>
+                {value || '<default>'}
+            </div>
+        );
 }
 
 function ageString(when) {
