@@ -30,6 +30,8 @@ const SPRING_K = 0.001; // strength of spring between bodies
 const ORIGIN_SPRING_K = 0.99; // strength of spring towards origin
 const VISCOSITY = 0.99;
 
+let calibrationTextDiv;
+
 function loadModelFromSettings() {
     let modelName = settings.model_name || 'bunny';
     if (!modelName.match(/\.(obj|stl)$/)) {
@@ -38,7 +40,7 @@ function loadModelFromSettings() {
     modelObj = loadModel('models/' + modelName, true);
 }
 
-var datControllers = {};
+let datControllers = {};
 if (window.dat && !isMobile) {
     const gui = new dat.GUI();
     // gui.remember(settings);  // uncomment to store settings to localStorage
@@ -63,6 +65,7 @@ export function preload() {
 export function setup() {
     createCanvas(windowWidth, windowHeight, WEBGL);
     createButton('Calibrate').position(0, 0).mousePressed(calibrateModels);
+    calibrationTextDiv = createDiv().style("color: red; font-size: 40px");
 }
 
 export function draw() {
@@ -102,9 +105,12 @@ export function draw() {
         const alpha = Math.max(5, 255 - age / 10);
         fill(255, 255, 255, alpha);
 
-        // Fully uncalibrated models are shown in red
+        // Label uncalibrated models
         if (data.calibration === 0) {
-            fill(255, 0, 0, alpha);
+            fill(255, 250, 250, alpha);
+            calibrationTextDiv.html("Uncalibrated").position(10, height - 60).show();
+        } else {
+            calibrationTextDiv.hide();
         }
 
         // Apply the GUI rotation settings
@@ -205,10 +211,10 @@ function updatePhysics(models) {
 
 onSensorData(
     ({ deviceId, data }) =>
-        (devices[deviceId] = {
-            ...(devices[deviceId] || {}),
-            ...data,
-        })
+    (devices[deviceId] = {
+        ...(devices[deviceId] || {}),
+        ...data,
+    })
 );
 
 export function keyPressed(evt) {
