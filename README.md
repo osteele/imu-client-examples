@@ -1,6 +1,6 @@
 # IMU Web Client Examples
 
-This directory contains example programs, that use the
+This directory contains example programs that use the
 [imu-tools](https://www.npmjs.com/package/imu-tools) npm package to connect to
 an ESP32 that is running either the MicroPython code in
 [imu-tools](https://github.com/osteele/imu-tools), or the Arduino (C++) code in
@@ -18,13 +18,17 @@ To run these examples, run a server such as:
   not necessary, but makes this compatible with the URLs in the Guide section
   below.)
 
-Click the "Connect BLUE" button to make a Bluetooth connection. This needs to be
-repeated each time the page is loaded.
+A device can be connected either via BLE ("Bluetooth Low Energy"), or an MQTT
+broker.
+
+To connect to a device via Bluetooth, click the "BLE Connect" button.
+Unfortunately, this needs to be repeated each time the page is loaded.
 
 To connect to an MQTT server ("broker"), click "Open Controls" and enter the
 hostname of the MQTT broker, and enter the username and password. If several
 devices are connected to the same server, the programs will display data from
-all of them. Enter a device id to restrict them to only a single device.
+all of them. Enter a device id in the controls to restrict them to only a single
+device.
 
 ## A Guide to the examples
 
